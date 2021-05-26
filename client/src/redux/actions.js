@@ -1,0 +1,1 @@
+export const LOGIN = (bool) => ({type: "LOGIN", bool})
