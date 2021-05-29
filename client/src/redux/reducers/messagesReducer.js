@@ -20,7 +20,21 @@ const messages = [
 ]
 
 const messagesReducer = (state = messages, action) => {
-
+    switch (action.type) {
+        case 'ADD_MESSAGE':
+            return [
+                ...state, {
+                    id:3,
+                    author: action.author,
+                    text: action.text,
+                    date: new Date().toLocaleTimeString()
+                }
+            ]
+            break;
+        default:
+            return state
+            break;
+    }
     return state
 }
 export default messagesReducer

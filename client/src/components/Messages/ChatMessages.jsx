@@ -1,14 +1,34 @@
 import React from 'react'
 
 import JackieWelles from '../../images/JackieWelles.png'
+import { io } from "socket.io-client"
+
+const socket = io('http://localhost:3000');
 
 class ChatMessages extends React.Component{
     constructor(props){
         super(props)
+        this.state ={
+            text: ''
+        }
+        this.onChangeHandler = this.onChangeHandler.bind(this)
+        this.onSendMessage = this.onSendMessage.bind(this)
     }
-
+    onSendMessage(e){
+        e.preventDefault()
+        socket.emit('message', this.state.text)
+        
+        
+    }
+    onChangeHandler(e){
+        this.setState({text: e.target.value})
+    }
+    componentDidMount(){
+        socket.on('message', msg => {
+            this.props.addMessage('Dexter DeShawn', msg)
+        })
+    }
     render(){
-        console.log(this.props)
         const {messages} = this.props
         return <section className='chat__messages'>
                     <div className="current__user">
@@ -63,8 +83,8 @@ class ChatMessages extends React.Component{
                     <div className="chat__messages-sendform">
                         <span className='label'>Message</span>
                         <form action="">
-                            <textarea name="" id="" className='text-area' ></textarea>
-                            <button>send</button>
+                            <textarea name="" id="" className='text-area' value={this.state.text} onChange={this.onChangeHandler}></textarea>
+                            <button onClick={this.onSendMessage}>send</button>
                         </form>
                     </div>
                 </section>

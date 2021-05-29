@@ -1,11 +1,12 @@
 import React, { Fragment } from "react"
 import {connect} from 'react-redux'
-import { io } from "socket.io-client"
+
 
 import Header from '../components/Header'
 import HistoryContainer from "./History/HistoryContainer"
 import ChatContainer from "./Messages/chatContainer"
 import AuthContainer from './Authcomponent/AuthContainer' 
+import { io } from "socket.io-client"
 
 const socket = io('http://localhost:3000');
 
