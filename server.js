@@ -14,7 +14,7 @@ const io = new Server(server, {
       }
 })
 
-app.use(cors())
+app.use(cors(), express.json())
 app.use('/api/auth/', authRouter)
 app.get('/', (req, res) => {
     res.send('hello')
