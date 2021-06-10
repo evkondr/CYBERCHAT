@@ -8,7 +8,6 @@ const login = async (req, res) => {
     const {email, password} = req.body
     try{
         const user = await User.findOne({email}).exec()
-        console.log(user)
         if(!user.length==0){
             return res.status(400).json({message: 'wrong password or email'})
         }
