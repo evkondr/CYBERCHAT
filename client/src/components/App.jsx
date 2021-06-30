@@ -1,38 +1,48 @@
 import React, { Fragment } from "react"
 import {connect} from 'react-redux'
+import { LOGIN } from '../redux/actions'
 
 
 import Header from '../components/Header'
-import HistoryContainer from "./History/HistoryContainer"
+import ChatHistory from "./History/ChatHistory"
+// import HistoryContainer from "./History/HistoryContainer"
 import ChatContainer from "./Messages/chatContainer"
 import AuthContainer from './Authcomponent/AuthContainer' 
-import { io } from "socket.io-client"
 
-const socket = io('http://localhost:3000');
 
 class App extends React.Component{
     constructor(props){
         super(props)
     }
+    componentDidMount(){
+        const data = JSON.parse(localStorage.getItem('storageKey'))
+        if(data){
+            this.props.login(data.token, data.userID)
+        }
+    }
     render(){
-        console.log(this.props.isLoggedIn)
         return <Fragment>
             <div className='filter'></div> 
             <div className='wrap'>
                 <Header />
-                {!this.props.isLoggedIn?<AuthContainer/>:
-                <main className='chat'>
-                    <HistoryContainer />
+                {this.props.token?<main className='chat'>
+                    <ChatHistory />
                     <ChatContainer />
-                </main>
-                }
+                </main>:<AuthContainer/>}
             </div>
         </Fragment> 
     }
 }
 const mapStateToProps = (state) => {
     return{
-        isLoggedIn: state.auth.isLoggedIn
+        token: state.auth.token
     }
 }
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => {
+    return{
+        login: (token, userID)=>{
+            dispatch(LOGIN(token, userID))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)

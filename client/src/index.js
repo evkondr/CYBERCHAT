@@ -1,11 +1,10 @@
 import React  from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
-import store from 'rdx/store'
+import store from './redux/store'
 import App from './components/App'
 import './style.scss'
 
-window.store = store
 ReactDOM.render(
     <Provider store={store}>
         <App />

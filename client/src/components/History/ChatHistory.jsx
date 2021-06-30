@@ -7,12 +7,12 @@ class ChatHistory extends React.Component{
     }
 
     render(){
-        const {users} = this.props  
+        // const {users} = this.props  
         return <aside className="chat__history">
                     <header>
                         <h3>HISTORY</h3>
                     </header>
-                    {users.map(user=> (<div className="person">
+                    {/* {users.map(user=> (<div className="person">
                         <div className="group">
                             <div className="person__avatar">
                                 <img src={user.avatar} alt=""/>
@@ -24,7 +24,7 @@ class ChatHistory extends React.Component{
                         <div className="preson__name">
                                 <p>{user.fullname}</p>
                         </div>
-                    </div>))}
+                    </div>))} */}
                     
                 </aside>
             }

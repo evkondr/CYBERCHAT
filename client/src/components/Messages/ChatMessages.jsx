@@ -1,9 +1,7 @@
 import React from 'react'
 
 import JackieWelles from '../../images/JackieWelles.png'
-import { io } from "socket.io-client"
-
-const socket = io('http://localhost:3000');
+import socket from '../../io/socket'
 
 class ChatMessages extends React.Component{
     constructor(props){
@@ -17,15 +15,13 @@ class ChatMessages extends React.Component{
     onSendMessage(e){
         e.preventDefault()
         socket.emit('message', this.state.text)
-        
-        
     }
     onChangeHandler(e){
         this.setState({text: e.target.value})
     }
     componentDidMount(){
         socket.on('message', msg => {
-            this.props.addMessage('Dexter DeShawn', msg)
+            this.props.addMessage('Dexter DeShawn', msg, new Date().toLocaleTimeString())
         })
     }
     render(){
@@ -77,7 +73,7 @@ class ChatMessages extends React.Component{
                                         <p>10:40 AM,Today</p>
                                     </div>   
                                 </div>
-                            </li>*/}
+                            </li> */}
                         </ul> 
                     </div>
                     <div className="chat__messages-sendform">

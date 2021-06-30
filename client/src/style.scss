@@ -104,6 +104,11 @@ body{
             }
         }
     }
+    .auth-block_alert{
+        border: 1px solid $color-3;
+        background: $element-bg;
+        padding: .5em;
+    }
     .chat{
         padding: 0.5em 0;
         display: flex;

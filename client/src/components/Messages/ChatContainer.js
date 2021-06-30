@@ -10,8 +10,8 @@ const mapStateToPtops = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMessage(author, text){
-            dispatch(ADD_MESSAGE(author, text))
+        addMessage(author, text, date){
+            dispatch(ADD_MESSAGE(author, text, date))
         }
     }
 }

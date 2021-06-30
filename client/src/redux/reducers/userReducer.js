@@ -12,7 +12,7 @@ const users = [
         messages: []
     }
 ] 
-const usersReducer = (state=users, action) => {
+const userReducer = (state=users, action) => {
     return state
 }
-export default usersReducer
+export default userReducer

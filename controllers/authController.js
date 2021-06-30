@@ -8,7 +8,7 @@ const login = async (req, res) => {
     const {email, password} = req.body
     try{
         const user = await User.findOne({email}).exec()
-        if(!user.length==0){
+        if(!user){
             return res.status(400).json({message: 'wrong password or email'})
         }
         const result = await bcrypt.compare(password, user.password)
@@ -21,9 +21,9 @@ const login = async (req, res) => {
             email: user.email
         }, jwtKey, {expiresIn: '1h'})
 
-        return res.status(200).json({token})
+        return res.status(200).json({token, userID: user._id})
     }catch(e){
-        res.status(500).json({message: 'something went wrong', error: e})
+        res.status(500).json({message: 'something went wrong', error: e.message})
     }
 }
 

@@ -1,16 +1,16 @@
 import {connect} from 'react-redux'
 import AuthComponent from './AuthComponent'
-import {LOGIN} from '../../redux/actions'
+import {LOGIN_ASYNC} from '../../redux/actions'
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.auth.isLoggedIn
+        alert: state.alert
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return{
-        onLogin: (bool) => {
-            dispatch(LOGIN(bool))
+        onLogin: (email, password) => {
+            dispatch(LOGIN_ASYNC(email, password))
         }
     }
 }
