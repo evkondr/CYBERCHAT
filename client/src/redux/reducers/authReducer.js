@@ -1,14 +1,14 @@
 let init = {
-    userID: null,
-    token: null
+    token: null,
+    userID: null
 }
 const authReducer = (state = init, action) => {
     switch (action.type) {
         case "LOGIN":
-            return {...state, userID: action.userID, token: action.token}
+            return {...state, token: action.token, userID: action.userID }
             break;
         case "LOGOUT":
-            return {...state, userID: null, token: null}
+            return {...state, token: null, userID: null }
             break;
         default:
             return state

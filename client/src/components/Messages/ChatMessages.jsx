@@ -9,20 +9,22 @@ class ChatMessages extends React.Component{
         this.state ={
             text: ''
         }
-        this.onChangeHandler = this.onChangeHandler.bind(this)
-        this.onSendMessage = this.onSendMessage.bind(this)
+        // this.onChangeHandler = this.onChangeHandler.bind(this)
+        // this.onSendMessage = this.onSendMessage.bind(this)
     }
-    onSendMessage(e){
-        e.preventDefault()
-        socket.emit('message', this.state.text)
-    }
+    // onSendMessage(e){
+    //     e.preventDefault()
+    //     socket.emit('message', this.state.text)
+    // }
     onChangeHandler(e){
         this.setState({text: e.target.value})
     }
     componentDidMount(){
-        socket.on('message', msg => {
-            this.props.addMessage('Dexter DeShawn', msg, new Date().toLocaleTimeString())
-        })
+        console.log(this.props.auth.token)
+        this.props.getMessages(this.props.auth.token)
+        // socket.on('message', msg => {
+        //     this.props.addMessage('Dexter DeShawn', msg, new Date().toLocaleTimeString())
+        // })
     }
     render(){
         const {messages} = this.props

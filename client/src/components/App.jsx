@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import {connect} from 'react-redux'
-import { LOGIN } from '../redux/actions'
+import { LOGIN, storageKey } from '../redux/actions'
 
 
 import Header from '../components/Header'
@@ -15,7 +15,7 @@ class App extends React.Component{
         super(props)
     }
     componentDidMount(){
-        const data = JSON.parse(localStorage.getItem('storageKey'))
+        const data = JSON.parse(localStorage.getItem(storageKey))
         if(data){
             this.props.login(data.token, data.userID)
         }

@@ -1,9 +1,10 @@
 const router = require('express').Router()
 
-const {getChat, addMessages} = require('../controllers/chatController')
+const {getChat, addMessages, deleteMessage} = require('../controllers/chatController')
 const authMiddleware = require('../middleware/authMiddleware')
 
-router.get('/chat',  getChat)
-router.post('/chat',  addMessages)
+router.get('/chat',  authMiddleware, getChat)
+router.post('/chat/add',  authMiddleware, addMessages)
+router.delete('/chat/delete', authMiddleware, deleteMessage)
 
 module.exports = router
