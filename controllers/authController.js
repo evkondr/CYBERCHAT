@@ -29,8 +29,8 @@ const login = async (req, res) => {
 
 // REGISTER A NEW USER
 const register = async (req, res) => {
-    const {name, surname, email, awatar} = req.body
     try{
+        const {name, surname, email, awatar} = req.body
         const user = await User.find({email})
         if(user){
             return res.status(403).json({message: 'user with this email already exists'})

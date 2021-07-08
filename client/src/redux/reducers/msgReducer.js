@@ -3,7 +3,7 @@ const init = []
 const msgReducer = (state = init, action) =>{
     switch (action.type) {
         case 'ADD_MESSAGE':
-            return [...state, {author: action.author, text: action.text, date: action.date }]
+            return [...state, {_id: action.id, author: action.author, text: action.text, date: action.date }]
             break;
         case 'GET_MESSAGES':
             return [...action.messages]

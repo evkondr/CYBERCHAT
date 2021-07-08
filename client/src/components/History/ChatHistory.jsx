@@ -10,7 +10,7 @@ class ChatHistory extends React.Component{
         // const {users} = this.props  
         return <aside className="chat__history">
                     <header>
-                        <h3>HISTORY</h3>
+                        <h3>USERS</h3>
                     </header>
                     {/* {users.map(user=> (<div className="person">
                         <div className="group">

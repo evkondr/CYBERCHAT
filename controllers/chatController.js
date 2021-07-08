@@ -13,12 +13,13 @@ const getChat = async (req, res) => {
 
 const addMessages = async (req, res) => {
     try{
+        console.log(req.body)
         const {userID, text} = req.body
         const {name, surname} = await Users.findById(userID, 'name surname').exec();
         const date = `${moment().format('L')} ${moment().format('LT')}`;
         const author = `${name} ${surname}`
-        await Messages.create({author, text, date});
-        return res.status(200).json({message: 'message saved to chat'})
+        const message = await Messages.create({author, text, date});
+        return res.status(200).json({message})
 
     }catch(e){
         return res.status(500).json({message: 'something went wrong', error: e.message})
