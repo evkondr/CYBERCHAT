@@ -229,6 +229,8 @@ body{
         }
         .current__user-messages{
             flex-grow: 1;
+            height: 400px;
+            overflow-y: scroll;
             padding-bottom: 1.5em;
             >ul{
                 padding: 1em;

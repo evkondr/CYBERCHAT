@@ -9,6 +9,7 @@ class ChatMessages extends React.Component{
         this.state ={
             text: ''
         }
+        this.chatRef = React.createRef()
         this.onChangeHandler = this.onChangeHandler.bind(this)
         this.onSendMessage = this.onSendMessage.bind(this)
     }
@@ -21,11 +22,14 @@ class ChatMessages extends React.Component{
     onChangeHandler(e){
         this.setState({text: e.target.value})
     }
+    componentDidUpdate(){
+        this.chatRef.current.scrollIntoView({behavior: "smooth"})
+    }
     componentDidMount(){
         const {token} = this.props.auth
         const {addMessage, getMessages}  = this.props
         socket.on('message_out', message => {
-            addMessage(message.id, message.author, message.text, message.date)
+            addMessage(message._id, message.author, message.text, message.date)
         })
         getMessages(token)
     }
@@ -45,7 +49,8 @@ class ChatMessages extends React.Component{
                     <div className="current__user-messages">
                         <ul>
                             {messages.map(msg =>(
-                                <li>
+                                
+                                <li key={msg._id} ref={this.chatRef}>
                                 <div className="message-body other">
                                     <div className="text">
                                         {msg.text}
