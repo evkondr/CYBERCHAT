@@ -40,27 +40,5 @@ export const GET_ASYNC_MESSAGES = (token) => {
     }
   }
 }
-// export const ADD_MESSAGE_ASYNC = (token, authorID, txt) => {
-//   return async (dispatch) => {
-//     try{
-//       console.log(authorID, txt)
-//       const {data} = await axios({
-//         url: '/api/chat/add',
-//         method: 'post',
-//         headers: {'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json'},
-//         data: {
-//           authorID,
-//           txt
-//         }
-//       })
-//       const { author, text} = data
-      
-//       dispatch(ADD_MESSAGE(author, text))
-//     }catch(e){
-//       // dispatch(LOGOUT())
-//       // localStorage.removeItem(storageKey)
-//       console.log(e)
-//     }
-//   }
-// }
+
 
