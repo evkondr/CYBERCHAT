@@ -10,7 +10,7 @@ const authMiddleware = async (req ,res, next) => {
             return res.status(401).json({'message': "Not authorized"})
         }
         const decoded = await jwt.verify(token, jwtKey)
-        res.user = decoded
+        req.user = decoded
     }catch(e){
         return res.status(401).json({'message': "Not authorized"})
     }

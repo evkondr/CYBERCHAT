@@ -13,6 +13,7 @@ const Messages = require('./models/messages')
 const authRouter = require('./routes/authRouter')
 const chatRouter = require('./routes/chatRouter')
 const usersRouter = require('./routes/usersRouter')
+const uploadRouter = require('./routes/uploadRouter')
 const io = new Server(server, {
     cors: {
         origin: "http://localhost:9000",
@@ -23,6 +24,7 @@ const io = new Server(server, {
 app.use(cors(), express.json())
 app.use('/api/auth/', authRouter)
 app.use('/api/users/', usersRouter)
+app.use('/api/upload/', uploadRouter)
 app.use('/api/', chatRouter)
 app.get('/', (req, res) => {
     res.send('hello')
