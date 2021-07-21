@@ -23,7 +23,7 @@ class ChatMessages extends React.Component{
         this.setState({text: e.target.value})
     }
     componentDidUpdate(){
-        this.chatRef.current.scrollIntoView({behavior: "smooth"})
+        this.chatRef.current && this.chatRef.current.scrollIntoView({behavior: "smooth"})
     }
     componentDidMount(){
         const {token} = this.props.auth
@@ -48,7 +48,7 @@ class ChatMessages extends React.Component{
                     </div>
                     <div className="current__user-messages">
                         <ul>
-                            {messages.map(msg =>(
+                            {messages.length>0?messages.map(msg =>(
                                 
                                 <li key={msg._id} ref={this.chatRef}>
                                 <div className="message-body other">
@@ -61,7 +61,7 @@ class ChatMessages extends React.Component{
                                     </div>   
                                 </div>
                             </li>
-                            ))}
+                            )):'No messages'}
                             
                             {/* <li >
                                 <div className="message-body my-message">

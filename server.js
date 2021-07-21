@@ -22,6 +22,8 @@ const io = new Server(server, {
 })
 //Middlewares
 app.use(cors(), express.json())
+app.use('/uploads/', express.static('uploads'));
+
 app.use('/api/auth/', authRouter)
 app.use('/api/users/', usersRouter)
 app.use('/api/upload/', uploadRouter)

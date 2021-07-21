@@ -2,6 +2,17 @@ import axios from 'axios'
 export const storageKey = 'user'
 //USERS ACTIONS
 export const GET_USERS = (users) => ({type: 'GET_USERS', users})
+export const GET_USERS_ASYNC = () => {
+  return async (dispatch) => {
+    try{
+      const { data } = await axios.get('/api/users')
+      dispatch(GET_USERS(data.users))
+    }catch(error){
+      const { message } = error.response.data
+      console.log(message)
+    }
+  }
+}
 //LOGIN ACTIONS
 export const SHOW_ALERT = (displayed, msg) => ({type: 'SHOW_ALERT', displayed, msg })
 export const LOGIN = (token, userID) => ({type: 'LOGIN', token, userID})

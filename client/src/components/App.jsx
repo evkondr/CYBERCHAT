@@ -4,8 +4,7 @@ import { LOGIN, storageKey } from '../redux/actions'
 
 
 import Header from '../components/Header'
-import ChatHistory from "./History/ChatHistory"
-// import HistoryContainer from "./History/HistoryContainer"
+import  UsersListContainer from "./UsersList/UsersListContainer"
 import ChatContainer from "./Messages/chatContainer"
 import AuthContainer from './Authcomponent/AuthContainer' 
 
@@ -26,7 +25,7 @@ class App extends React.Component{
             <div className='wrap'>
                 <Header />
                 {this.props.token?<main className='chat'>
-                    <ChatHistory />
+                    <UsersListContainer />
                     <ChatContainer />
                 </main>:<AuthContainer/>}
             </div>
