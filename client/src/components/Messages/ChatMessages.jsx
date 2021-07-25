@@ -36,62 +36,39 @@ class ChatMessages extends React.Component{
 
     render(){
         const {messages} = this.props
-        return <section className='chat__messages'>
-                    <div className="current__user">
-                        <div className="current__user-avatar">
-                            <img src={JackieWelles} alt=""/>
+        return <section className='chat-section'>
+                    <div className="chat-section__user">
+                        <div className="theme-avatar chat-section__user-avatar">
+                            <img class="img" src={JackieWelles} alt=""/>
                         </div>
-                        <div className="current__user-info">
+                        <div className="chat-section__user-info">
                                 <h3>Chat with Jackie Welles</h3>
                                 <p><span>0</span> messages</p>
                         </div>
                     </div>
-                    <div className="current__user-messages">
-                        <ul>
+                    <div className="chat-messages">
+                        <ul className="chat-messages__list">
                             {messages.length>0?messages.map(msg =>(
                                 
                                 <li key={msg._id} ref={this.chatRef}>
-                                <div className="message-body other">
-                                    <div className="text">
+                                <div className="message-body message-body__item">
+                                    <div className="message-body__text">
                                         {msg.text}
                                     </div>
-                                    <div className="data">
-                                        <p className="data__author">{msg.author},</p>
+                                    <div className="message-body__data">
+                                        <p className="message-body__author">{msg.author},</p>
                                         <p>{msg.date}</p>
                                     </div>   
                                 </div>
                             </li>
                             )):'No messages'}
-                            
-                            {/* <li >
-                                <div className="message-body my-message">
-                                    <div className="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing eli
-                                    </div>
-                                    <div className="data">
-                                        <p className="data__author">Me,</p>
-                                        <p>10:35 AM,Today</p>
-                                    </div>   
-                                </div>
-                            </li>
-                            <li>
-                                <div className="message-body other">
-                                    <div className="text">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, accusamus?
-                                    </div>
-                                    <div className="data">
-                                        <p className="data__author">Jackie Welles,</p>
-                                        <p>10:40 AM,Today</p>
-                                    </div>   
-                                </div>
-                            </li> */}
                         </ul> 
                     </div>
-                    <div className="chat__messages-sendform">
-                        <span className='label'>Message</span>
-                        <form action="">
-                            <textarea name="" id="" className='text-area' value={this.state.text} onChange={this.onChangeHandler}></textarea>
-                            <button onClick={this.onSendMessage}>send</button>
+                    <div className="messages-send-block">
+                        <span className="messages-send-block__label">Message</span>
+                        <form className="messages-send-block__form" action="">
+                            <textarea className="messages-send-block__text-area" name="" id=""  value={this.state.text} onChange={this.onChangeHandler}></textarea>
+                            <button className="theme-button messages-send-block__button" onClick={this.onSendMessage}>send</button>
                         </form>
                     </div>
                 </section>

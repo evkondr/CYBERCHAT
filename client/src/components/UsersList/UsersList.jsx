@@ -10,22 +10,23 @@ class UsersList extends React.Component{
     }
     render(){
         const {users} = this.props  
-        return <aside className="chat__history">
-                    <header>
-                        <h3>USERS</h3>
+        return <aside className="users-list">
+                    <header className="users-list__header">
+                        <h3 className="users-list__title">USERS</h3>
                     </header>
-                    {users.map(user => (<div key={user._id} className="person">
-                        <div className="group">
-                            <div className="person__avatar">
-                                <img src={`http://localhost:3000/${user.avatar}`} alt=""/>
-                            </div>
-                            <div className="person__status">
-                                <p><span className='person__statu-light online'></span> online</p>
-                            </div>
+                    {users.map(user => (<div key={user._id} className="user-block users-list__item">
+                        <div className="theme-avatar user-block__avatar">
+                            <img className="img" src={`http://localhost:3000/${user.avatar}`} alt=""/>
                         </div>
-                        <div className="preson__name">
+                        <div className="user-block__group">
+                            <div className="user-block__name">
                                 <p>{`${user.name} ${user.surname}`}</p>
+                            </div>
+                            <div className="user-block__status">
+                                <p><span className='user-block__status-light user-block__status-light--online'></span> online</p>
+                            </div>        
                         </div>
+                        
                     </div>))}
                     
                 </aside>

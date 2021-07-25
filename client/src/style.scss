@@ -34,10 +34,28 @@ html, body{
     width: 100%;
     min-height: 100vh;
 }
-img{
+.img{
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+.button-group{
+    justify-content: flex-start!important;
+}
+.theme-button{
+    background: none;
+    border: 2px solid $color-1;
+    text-transform: uppercase;
+    color: $color-1;
+    cursor: pointer;
+    transition: all 0.2s;
+    &:hover{
+        background-color: rgba($color: $color-1, $alpha: 0.3);
+    }
+}
+.theme-avatar{
+    overflow: hidden;
+    border: $border;
 }
 // ----- MAIN ----- 
 body{
@@ -49,267 +67,238 @@ body{
     position: relative;
     display: flex;
     justify-content: center;
-    // ----- Backround filter -----
-    .filter{
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba($color: #000000, $alpha: 0.7);
-        z-index: -1;
-    }
+    
+}
+// ----- Backround filter -----
+.filter{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.7);
+    z-index: -1;
 }
 #root{
     width: 100%;
     height: 100%;
 }
-// ----- Wrap -----
+// ----- SITE LOGO ----- //
+.logo{
+    width: 300px;
+}
+// ----- MAIN WRAP -----
 .wrap{
     max-width: 970px;
     margin: 2em auto 1em auto;
     height: 100%;
-    // ----- Main logo -----
-    .logo{
-        width: 300px;
+}
+//----- MAIN CHAT BLOCK -----//
+.chat{
+    padding: 0.5em 0;
+    display: flex;
+    width: 100%;
+    min-height: 700px;
+    background: $gradient;
+    opacity: 0.93;
+}
+// ----- AUTH PAGE ----- //
+.auth-block{
+    width: 400px;
+}
+.auth-block__item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+    label{
+        padding: 10px;
     }
-    // ----- Auth block -----
-    .auth-block{
-        width: 400px;
-        li{
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1em;
-            label{
-                padding: 10px;
-            }
-        }
-        input{
-            border: 1px solid $color-3;
-            background: $element-bg;
-            color: $color-2;
-            padding: .5em 5em .5em .5em;
-            font-family: $ffamaly;
-            font-size: 1em;
-        }
-        .botton-group{
-            justify-content: flex-start;
-        }
-        button{
-            background: none;
-            border: 2px solid $color-1;;
-            text-transform: uppercase;
-            color: $color-1;
-            padding: 1em; 
-            cursor: pointer;
-            transition: all 0.2s;
-            margin-right: 1em;
-            &:hover{
-                background-color: rgba($color: $color-1, $alpha: 0.3);
-            }
-        }
-    }
-    .auth-block_alert{
-        border: 1px solid $color-3;
-        background: $element-bg;
-        padding: .5em;
-    }
-    .chat{
-        padding: 0.5em 0;
-        display: flex;
-        width: 100%;
-        min-height: 700px;
-        background: $gradient;
-        opacity: 0.93;
-    }
-    .chat__history{
-        padding: 1em;
-        width: 30%;
-        border-right: $border;
-        header{
-            padding-bottom: 1em;
-            border-bottom: $border;
-            margin-bottom: 1em;
-            color: #E74744;
-            h3{
-                color: #E74744;
-                text-shadow: 0 0 10px #E74744;
-            }
-        }
-    }
-     // ----- Person block -----
-     // ----- into Chat history -----
-    .person{
-        display: flex;
-        justify-content: flex-start;
-        background-color: $element-bg;
-        border: $border;
-        padding: 0.5em 1em;
-        text-align: center;
-        position: relative;
-        margin-bottom: 1em;
-        transition: all .2s;
-        &:hover{
-            cursor: pointer;
-            background-color: rgb(75,26,29);
-        }
-        &:before{
-            @include b-f;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 5px;
-            border-right: $border;
-            background-color: rgb(67,30,33);
-        }
-        .person__avatar{
-            width: 40px;
-            height: 40px;
-            overflow: hidden;
-            border: $border;
-            
-        }
-        .person__status{
-            margin-top: 0.5em;
-            font-size: 0.7em;
-            font-weight: 200;
-        }
-        .person__statu-light{
-            display: inline-block;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            vertical-align: middle;
-        }
-        .person__statu-light.online{
-            background-color: green;
-        }
-        .person__statu-light.offline{
-            background-color: red;
-        }
-        .preson__name{
-            font-size: 1em;
-            margin-left: 1em;
-        }
-    }
-    .person.active{
+}
+.auth-block__input{
+    border: 1px solid $color-3;
+    background: $element-bg;
+    color: $color-2;
+    padding: .5em 5em .5em .5em;
+    font-family: $ffamaly;
+    font-size: 1em;
+}
+.auth-block__button{
+    padding: 1em; 
+    margin-right: 1em;
+}
+.auth-block_alert{
+    border: 1px solid $color-3;
+    background: $element-bg;
+    padding: .5em;
+}
+//----- USERS LIST-----//
+.users-list{
+    padding: 1em;
+    width: 30%;
+    border-right: $border;
+}
+.users-list__header{
+    padding-bottom: 1em;
+    border-bottom: $border;
+    margin-bottom: 1em;
+    color: #E74744;
+}
+.users-list__title{
+    color: #E74744;
+    text-shadow: 0 0 10px #E74744;
+}
+.users-list__item{
+    margin-bottom: 1em;
+}
+//-----USER BLOCK-----//
+.user-block{
+    display: flex;
+    justify-content: flex-start;
+    background-color: $element-bg;
+    border: $border;
+    padding: 0.5em 1em;
+    text-align: center;
+    position: relative;
+    transition: all .2s;
+    &:hover{
+        cursor: pointer;
         background-color: rgb(75,26,29);
     }
-
-     // ----- Messages block -----
-    .chat__messages{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 1em;
-        width: 70%;
-        position: relative;
-        // ----- Current user block -----
-        .current__user{
-            padding-bottom: 1em;
-            display: flex;
-            position: relative;
-            &:after{
-                @include b-f;
-                width: 100%;
-                height: 1px;
-                background: #B7565B;
-                bottom: 0;
-                box-shadow: 0 0 10px #E74744;;
-            }
-            .current__user-avatar{
-                width: 70px;
-                height: 70px;
-                overflow: hidden;
-                border: $border;
-            }
-            .current__user-info{
-                margin-left: 2em;
-                
-            }
-        }
-        .current__user-messages{
-            flex-grow: 1;
-            height: 400px;
-            overflow-y: scroll;
-            padding-bottom: 1.5em;
-            >ul{
-                padding: 1em;
-                display: flex;
-                flex-direction: column;
-            }
-        }
-        // ----- Current user messages block -----
-        .message-body{
-            font-size: .8em;
-            padding: 0.5em;
-            border-radius: 5px;
-            border: 1px solid $color-2;
-            background-color: $element-bg;;
-            color: $color-2;
-            width: 80%;
-            margin-bottom: 0.5em;
-            .data{
-                text-align: right;
-                display: flex;
-                justify-content: flex-end;
-                font-size: 0.8em;
-                opacity: 0.5;
-                p:first-child{
-                    margin-right: 0.5em;
-                }
-            }
-        }
-        .my-message{
-            float: right;
-        }
-        // ----- Send form -----
-        .chat__messages-sendform{
-            height: 4em;
-            border: $border;
-            align-self: flex-end;
-            width: 100%;
-            position: relative;
-            .label{
-                font-size: .8em;
-                position: absolute;
-                left: -1px;
-                top: -19px;
-                background: #B7565B;
-                padding: 0 1em;
-                color: #0D0C12;
-            }
-            form{
-                width: 100%;
-                height: 100%;
-            }
-            .text-area{
-                background: $element-bg;
-                width: 100%;
-                height: 100%;
-                border: none;
-                color: $color-2;
-                resize: none;
-                padding: .5em 5em .5em .5em;
-                font-family: $ffamaly;
-                
-            }
-            button{
-                background: none;
-                border: 2px solid $color-1;;
-                text-transform: uppercase;
-                position: absolute;
-                color: $color-1;
-                width: 4em;
-                height: 4em;
-                right: 0;
-                margin-right: 1em;
-                margin-top: 0.5em;
-                cursor: pointer;
-                transition: all 0.2s;
-                &:hover{
-                    background-color: rgba($color: $color-1, $alpha: 0.3);
-                }
-            }
-        }
+    &:before{
+        @include b-f;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 5px;
+        border-right: $border;
+        background-color: rgb(67,30,33);
+    }  
+}
+.user-block__avatar{
+    width: 40px;
+    height: 40px;
+}
+.user-block__status{
+    margin-top: 0.5em;
+    font-size: 0.7em;
+    font-weight: 200;
+}
+.user-block__status-light{
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.user-block__status-light--online{
+    background-color: green;
+}
+.user-block__status-light--offline{
+    background-color: red;
+}
+.user-block__name{
+    font-size: 1em;
+    margin-left: 1em;
+}
+//----- CHAT SECTION -----//
+.chat-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+    width: 70%;
+    position: relative;
+}
+.chat-section__user{
+    padding-bottom: 1em;
+    display: flex;
+    position: relative;
+    &:after{
+        @include b-f;
+        width: 100%;
+        height: 1px;
+        background: #B7565B;
+        bottom: 0;
+        box-shadow: 0 0 10px #E74744;;
     }
+}
+.chat-section__user-avatar{
+    width: 70px;
+    height: 70px;
+}
+.chat-section__user-info{
+    margin-left: 2em;   
+}
+.chat-messages{
+    flex-grow: 1;
+    height: 400px;
+    overflow-y: scroll;
+    padding-bottom: 1.5em;
+}
+.chat-messages__list{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+}
+//----- MESSAGE BODY -----//
+.message-body{
+    font-size: .8em;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid $color-2;
+    background-color: $element-bg;;
+    color: $color-2;
+    width: 80%;
+    margin-bottom: 0.5em;
+}
+.message-body__data{
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 0.8em;
+    opacity: 0.5;
+}
+.message-body__author{
+    margin-right: 0.5em;
+}
+.message-body--my-message{
+    float: right;
+}
+.messages-send-block{
+    height: 4em;
+    border: $border;
+    align-self: flex-end;
+    width: 100%;
+    position: relative;
+}
+.messages-send-block__form{
+    width: 100%;
+    height: 100%;
+}
+.messages-send-block__text-area{
+    background: $element-bg;
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: $color-2;
+    resize: none;
+    padding: .5em 5em .5em .5em;
+    font-family: $ffamaly;
+    
+}
+.messages-send-block__label{
+    font-size: .8em;
+    position: absolute;
+    left: -1px;
+    top: -19px;
+    background: #B7565B;
+    padding: 0 1em;
+    color: #0D0C12;
+}
+.messages-send-block__button{
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    right: 0;
+    margin-right: 1em;
+    margin-top: 0.5em;
 }

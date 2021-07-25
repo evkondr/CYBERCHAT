@@ -39,31 +39,31 @@ class AuthComponent extends React.Component {
     render(){
         const alert = this.props.alert
         return <div className="auth-block">
-            <form action="">
+            <form className="auth-blokc__form" action="">
                 <ul>
-                    {this.state.registerMode && <li>
+                    {this.state.registerMode && <li className="auth-block__item">
                        <label htmlFor="name">Your name</label>
-                        <input type="text" name="mane" id="name" value={this.state.name} onChange={this.onChangeHandler}/>
+                        <input className="auth-block__input" type="text" name="mane" id="name" value={this.state.name} onChange={this.onChangeHandler}/>
                     </li>
                     }
-                    {this.state.registerMode && <li>
+                    {this.state.registerMode && <li className="auth-block__item">
                        <label htmlFor="surname">Your surname</label>
-                        <input type="text" name="surname" id="surname" value={this.state.surname} onChange={this.onChangeHandler}/>
+                        <input className="auth-block__input" type="text" name="surname" id="surname" value={this.state.surname} onChange={this.onChangeHandler}/>
                     </li>
                     }
                     
-                    <li>
+                    <li className="auth-block__item">
                        <label htmlFor="email">Your email</label>
-                        <input type="text" name="email" id="email" value={this.state.email} onChange={this.onChangeHandler}/>
+                        <input className="auth-block__input" type="text" name="email" id="email" value={this.state.email} onChange={this.onChangeHandler}/>
                     </li>
-                    <li>
+                    <li className="auth-block__item">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" value={this.state.password} onChange={this.onChangeHandler}/>
+                        <input className="auth-block__input" type="password" id="password" value={this.state.password} onChange={this.onChangeHandler}/>
                     </li>
-                    <li className='botton-group'>
-                        {this.state.registerMode && <button onClick={this.cancelHandler}>cancel</button>}
-                        {!this.state.registerMode && <button onClick={this.signInHandler}>Sign in</button>}
-                        {!this.state.registerMode?<button onClick={this.changeMode}>Register</button>:<button onClick={this.register}>Register</button>}
+                    <li className='auth-block__item button-group'>
+                        {this.state.registerMode && <button className="theme-button auth-block__button" onClick={this.cancelHandler}>cancel</button>}
+                        {!this.state.registerMode && <button className="theme-button auth-block__button" onClick={this.signInHandler}>Sign in</button>}
+                        {!this.state.registerMode?<button className="theme-button auth-block__button" onClick={this.changeMode}>Register</button>:<button className="theme-button auth-block__button" onClick={this.register}>Register</button>}
                     </li>
                 </ul>
                 {alert.displayed && <div className="auth-block_alert">
