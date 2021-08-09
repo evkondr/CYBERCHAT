@@ -57,6 +57,30 @@ html, body{
     overflow: hidden;
     border: $border;
 }
+.preloader{
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+.preloader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid $color-1;
+    border-color: $color-1 transparent $color-1 transparent;
+    animation: preloader 1.2s linear infinite;
+  }
+  @keyframes preloader{
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 // ----- MAIN ----- 
 body{
     color: $color-1;
@@ -125,7 +149,7 @@ body{
     padding: 1em; 
     margin-right: 1em;
 }
-.auth-block_alert{
+.auth-block__alert{
     border: 1px solid $color-3;
     background: $element-bg;
     padding: .5em;

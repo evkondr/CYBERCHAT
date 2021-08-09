@@ -1,4 +1,5 @@
 import React from 'react'
+import Preloader from '../Preloader/Preloader'
 
 class AuthComponent extends React.Component {
     constructor(props){
@@ -8,7 +9,7 @@ class AuthComponent extends React.Component {
             password: '',
             name: '',
             surname: '',
-            registerMode: false 
+            registerMode: false
         }
         this.signInHandler = this.signInHandler.bind(this)
         this.onChangeHandler = this.onChangeHandler.bind(this)
@@ -19,6 +20,7 @@ class AuthComponent extends React.Component {
     signInHandler(e){
         e.preventDefault()
         this.props.onLogin(this.state.email, this.state.password)
+        console.log(this.props.loader)
     }
     //Inputs change handler 
     onChangeHandler(e){
@@ -37,7 +39,7 @@ class AuthComponent extends React.Component {
         this.setState({registerMode: false})
     }
     render(){
-        const alert = this.props.alert
+        const {alert, loader} = this.props
         return <div className="auth-block">
             <form className="auth-blokc__form" action="">
                 <ul>
@@ -61,15 +63,15 @@ class AuthComponent extends React.Component {
                         <input className="auth-block__input" type="password" id="password" value={this.state.password} onChange={this.onChangeHandler}/>
                     </li>
                     <li className='auth-block__item button-group'>
-                        {this.state.registerMode && <button className="theme-button auth-block__button" onClick={this.cancelHandler}>cancel</button>}
-                        {!this.state.registerMode && <button className="theme-button auth-block__button" onClick={this.signInHandler}>Sign in</button>}
-                        {!this.state.registerMode?<button className="theme-button auth-block__button" onClick={this.changeMode}>Register</button>:<button className="theme-button auth-block__button" onClick={this.register}>Register</button>}
+                        {this.state.registerMode && <button className="theme-button auth-block__button" onClick={this.cancelHandler} disabled={loader.isloading}>cancel</button>}
+                        {!this.state.registerMode && <button className="theme-button auth-block__button" onClick={this.signInHandler} disabled={loader.isloading}>Sign in</button>}
+                        {!this.state.registerMode?<button className="theme-button auth-block__button" onClick={this.changeMode} disabled={loader.isloading}>Register</button>:<button className="theme-button auth-block__button" onClick={this.register}>Register</button>}
                     </li>
                 </ul>
-                {alert.displayed && <div className="auth-block_alert">
+                {alert.displayed && <div className="auth-block__alert">
                     <p>{alert.msg}</p>  
                 </div> } 
-                
+                {loader.isloading && <Preloader />}
             </form>
         </div>
     }

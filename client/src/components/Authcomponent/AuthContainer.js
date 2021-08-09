@@ -4,7 +4,8 @@ import {LOGIN_ASYNC} from '../../redux/actions'
 
 const mapStateToProps = (state) => {
     return {
-        alert: state.alert
+        alert: state.alert,
+        loader: state.loader
     }
 }
 const mapDispatchToProps = (dispatch) => {

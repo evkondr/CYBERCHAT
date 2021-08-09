@@ -37,7 +37,6 @@ const register = async (req, res) => {
     try{
         const {name, surname, email} = req.body
         const user = await User.find({email})
-        console.log(!user.length)
         if(user.length){
             return res.status(403).json({message: 'user with this email already exists'})
         }

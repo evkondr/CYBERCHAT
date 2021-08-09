@@ -5,7 +5,8 @@ import { GET_USERS_ASYNC } from '../../redux/actions'
 
 const mapStateToProps = (state) => {
     return {
-        users: state.users
+        users: state.users,
+        loader: state.loader
     }
 }
 const mapDispatchToProps = (dispatch) => {

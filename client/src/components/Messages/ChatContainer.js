@@ -6,7 +6,8 @@ import { ADD_MESSAGE,  GET_ASYNC_MESSAGES } from '../../redux/actions'
 const mapStateToPtops = (state) => {
     return {
         messages: state.messages,
-        auth: state.auth
+        auth: state.auth,
+        loader: state.loader
     }
 }
 const mapDispatchToProps = (dispatch) => {

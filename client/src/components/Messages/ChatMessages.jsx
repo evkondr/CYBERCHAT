@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Preloader from '../Preloader/Preloader'
 import JackieWelles from '../../images/JackieWelles.png'
 import socket from '../../io/socket'
 
@@ -35,11 +35,11 @@ class ChatMessages extends React.Component{
     }
 
     render(){
-        const {messages} = this.props
+        const {messages, loader} = this.props
         return <section className='chat-section'>
                     <div className="chat-section__user">
                         <div className="theme-avatar chat-section__user-avatar">
-                            <img class="img" src={JackieWelles} alt=""/>
+                            <img className="img" src={JackieWelles} alt=""/>
                         </div>
                         <div className="chat-section__user-info">
                                 <h3>Chat with Jackie Welles</h3>
@@ -48,6 +48,7 @@ class ChatMessages extends React.Component{
                     </div>
                     <div className="chat-messages">
                         <ul className="chat-messages__list">
+                            {loader.isloading && <Preloader/>}
                             {messages.length>0?messages.map(msg =>(
                                 
                                 <li key={msg._id} ref={this.chatRef}>
